@@ -41,7 +41,6 @@ const showNews = (catagoryNo, catagoryName) => {
           ${newss.length} items found for category ${catagoryName}
           `;
       }
-
       console.log(news);
     });
   };

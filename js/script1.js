@@ -12,7 +12,6 @@ const showSpinner = (tf) => {
     spinner.classList.add("hidden");
   }
 };
-// showSpinner(true);
 
 const showCatagory = () => {
   const url1 = "https://openapi.programming-hero.com/api/news/categories";
@@ -53,7 +52,7 @@ const showNews = (catagoryNo, catagoryName) => {
           `;
     newss.forEach((news) => {
       const newDiv1 = document.createElement("div");
-      console.log(news._id);
+
       if (news.author.published_date === null) {
         news.author.published_date = `Date Not Found`;
       }

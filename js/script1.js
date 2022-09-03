@@ -140,8 +140,8 @@ const showInformation = (id) => {
   const url3 = `https://openapi.programming-hero.com/api/news/${id}`;
   fetch(url3)
     .then((res) => res.json())
-    .then((datas) => showInfos(datas.data[0]));
-
+    .then((datas) => showInfos(datas.data[0]))
+    .catch("Wrong API");
   const showInfos = (data) => {
     if (data.total_view === null) {
       data.total_view = `No Info`;

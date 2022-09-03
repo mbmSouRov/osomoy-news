@@ -68,7 +68,7 @@ const showNews = (catagoryNo, catagoryName) => {
           class="flex flex-col items-center bg-white rounded-lg shadow-md md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-white dark:hover:bg-gray-200 mb-4"
         >
           <img
-            class="object-cover w-full h-full rounded-t-lg md:h-1/2 md:w-1/2 md:rounded-none md:rounded-l-lg p-2"
+            class="object-cover w-max h-max rounded-t-lg md:h-1/2 md:w-1/5 md:rounded-none md:rounded-l-lg p-2"
             src="${news.thumbnail_url}"
             alt=""
           />

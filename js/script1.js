@@ -1,12 +1,23 @@
 const catagorySection = document.getElementById("catagory-section");
 const sectionItemsFound = document.getElementById("section-itemsFound");
 const newsArticle = document.getElementById("news-article");
+const spinner = document.getElementById("spinner");
+
+const showSpinner = (tf) => {
+  if (tf === true) {
+    spinner.classList.remove("hidden");
+  } else {
+    spinner.classList.add("hidden");
+  }
+};
+// showSpinner(true);
 
 const showCatagory = () => {
   const url1 = "https://openapi.programming-hero.com/api/news/categories";
   fetch(url1)
     .then((res) => res.json())
-    .then((datas) => showData(datas.data.news_category));
+    .then((datas) => showData(datas.data.news_category))
+    .catch("Error Loading API");
 
   showData = (datas) => {
     datas.forEach((data) => {
@@ -24,10 +35,12 @@ const showCatagory = () => {
   };
 };
 const showNews = (catagoryNo, catagoryName) => {
+  showSpinner(true);
   const url2 = `https://openapi.programming-hero.com/api/news/category/${catagoryNo}`;
   fetch(url2)
     .then((res) => res.json())
-    .then((allNews) => showNewsDetails(allNews));
+    .then((allNews) => showNewsDetails(allNews))
+    .catch("Error Loading API");
 
   showNewsDetails = (allNews) => {
     newsArticle.innerHTML = "";
@@ -63,7 +76,7 @@ const showNews = (catagoryNo, catagoryName) => {
               ${news.title}
             </h5>
             <p class="mb-3 text-sm text-gray-700 dark:text-gray-700">
-            ${news.details.slice(0, 400)}
+            ${news.details.slice(0, 400) + "..."}
             </p>
             <!-- END SECTOPM -->
             <div
@@ -177,6 +190,7 @@ const showNews = (catagoryNo, catagoryName) => {
         </a>
       `;
       newsArticle.appendChild(newDiv1);
+      showSpinner(false);
     });
   };
 };

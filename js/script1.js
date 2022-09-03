@@ -46,11 +46,15 @@ const showNews = (catagoryNo, catagoryName) => {
   showNewsDetails = (allNews) => {
     newsArticle.innerHTML = "";
     const newss = allNews.data;
-
     sectionItemsFound.innerHTML = `
           ${newss.length} items found for category ${catagoryName}
           `;
+    // SORTING
+    newss.sort((a, b) => {
+      return b.total_view - a.total_view;
+    });
     newss.forEach((news) => {
+      console.log(`${news.total_view}`);
       const newDiv1 = document.createElement("div");
 
       if (news.author.published_date === null) {

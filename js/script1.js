@@ -5,6 +5,10 @@ const spinner = document.getElementById("spinner");
 const modalTitle = document.getElementById("modal-title");
 const authorName = document.getElementById("author-name");
 const viewCount = document.getElementById("view-count");
+
+// Right Click Disabled
+document.addEventListener("contextmenu", (event) => event.preventDefault());
+
 const showSpinner = (tf) => {
   if (tf === true) {
     spinner.classList.remove("hidden");
@@ -47,7 +51,7 @@ const showNews = (catagoryNo, catagoryName) => {
     newsArticle.innerHTML = "";
     const newss = allNews.data;
     sectionItemsFound.innerHTML = `
-          ${newss.length} items found for category ${catagoryName}
+    <span class="text-red-900 font-semibold">${newss.length}</span> items found for category <span class="text-red-900 font-semibold">${catagoryName}</span>
           `;
     // SORTING
     newss.sort((a, b) => {
